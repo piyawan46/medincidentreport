@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝Incident Report</title>
+
+<!-- ฟอนต์ -->
+<link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/thsarabunnew/thsarabunnew.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'THSarabunNew', sans-serif;
+    font-size: 19px;
+    line-height: 1.7;
+    background: linear-gradient(to right, #eef2f7, #f8fbff);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 820px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #2c3e50;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 18px;
+    display: block;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 6px rgba(52,152,219,0.3);
+}
+
+/* 10R */
+.tenr-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.tenr-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #fafcff;
+    cursor: pointer;
+}
+
+.tenr-item:hover {
+    background: #eaf4ff;
+}
+
+.tenr-item input {
+    width: 22px;
+    height: 22px;
+}
+
+.tenr-item span {
+    font-size: 18px;
+}
+
+/* ปุ่ม */
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2c7be5;
+}
+
+/* 🔥 status */
+#status {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>📝 Medication Incident Report </h2>
+
+<form id="incidentForm">
+
+<label>วันที่</label>
+<input type="date" id="date" required>
+
+<label>เวร</label>
+<select id="shift" required>
+<option value="">-- เลือกช่วงเวลา --</option>
+<option value="เวรเช้า">เวรเช้า 08.00-16.00 น.</option>
+<option value="เวรบ่าย">เวรบ่าย 16.00-00.00 น.</option>
+<option value="เวรดึก">เวรดึก 00.00-08.00 น.</option>
+</select>
+
+
+<label>HN</label>
+<input type="text" id="hn" required>
+
+<label>ประเมินตามหลัก 10R</label>
+<div class="tenr-grid">
+
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Patient"><span>Right Patient</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Drug"><span>Right Drug</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Dose"><span>Right Dose</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Route"><span>Right Route</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Time"><span>Right Time</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Documentation"><span>Right Documentation</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right to Refuse"><span>Right to Refuse</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right History&Assessment"><span>Right History & Assessment</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right DDI&Evaluation"><span>Right DDI & Evaluation</span></label>
+<label class="tenr-item"><input type="checkbox" name="tenR" value="Right Education"><span>Right Education</span></label>
+
+</div>
+
+<label>สาเหตุของเหตุการณ์</label>
+<select id="cause" required>
+<option value="">-- เลือกสาเหตุ --</option>
+<option value="บุคลากร">บุคลากร: workload,เหนื่อยล้า, สื่อสารไม่ครบถ้วน </option>
+<option value="กระบวนการ">กระบวนการ: double check ไม่ครอบคลุม,ไม่ทำ 7R </option>
+<option value="ยา">ยา: หลากหลายขนาด/รูปแบบ/ปริมาณ, ฉลากยาไม่ชัดเจน, LASA</option>
+<option value="สิ่งแวดล้อม">สิ่งแวดล้อม: เร่งรีบ, มีสิ่งรบกวน, พื้นที่เตรียมยาไม่เหมาะสม</option>
+<option value="ข้อมูล">ข้อมูล: ไม่มี CDSS, ข้อมูลยากระจัดกระจาย, การเข้าถึงข้อมูลยา</option>
+</select>
+
+<label>รายละเอียด</label>
+<textarea id="detail" rows="2" required></textarea>
+
+<label>ระดับความรุนแรง</label>
+<select id="severity" required>
+<option value="">-- เลือกระดับ --</option>
+<option value="A">A-มีโอกาสผิดพลาด</option>
+<option value="B">B-มีความผิดพลาดแต่ยังไม่ถึงตัวผู้ป่วย</option>
+<option value="C">C-ถึงตัวผู้ป่วยแต่ไม่อันตราย</option>
+<option value="D">D-ต้องเฝ้าระวังอันตราย</option>
+<option value="E">E-ต้องรักษาเกิดอันตรายชั่วคราว</option>
+<option value="F">F-ต้องรักษา นอน รพ. นานขึ้น</option>
+<option value="G">G-ต้องรักษาอันตรายถาวร</option>
+<option value="H">H-ต้องช่วยชีวิต</option>
+<option value="I">I-เสียชีวิต</option>
+</select>
+
+<label>ชื่อผู้บันทึก</label>
+<input type="text" id="reporter" required>
+
+<button type="submit">บันทึกข้อมูล</button>
+
+<div id="status"></div>
+
+</form>
+</div>
+
+<script>
+document.getElementById("incidentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const statusEl = document.getElementById("status");
+
+    const tenR = Array.from(document.querySelectorAll('input[name="tenR"]:checked'))
+                      .map(el => el.value);
+
+    const data = {
+        date: document.getElementById("date").value,
+        shift: document.getElementById("shift").value,
+        hn: document.getElementById("hn").value,
+        tenR: tenR,
+        cause: document.getElementById("cause").value,
+        detail: document.getElementById("detail").value,
+        severity: document.getElementById("severity").value,
+        reporter: document.getElementById("reporter").value,
+    };
+
+    if (!data.date ||!data.shift || !data.hn || tenR.length === 0 || !data.cause || !data.detail || !data.severity || !data.reporter) {
+        statusEl.style.color = "#e53935";
+        statusEl.style.background = "#ffebee";
+        statusEl.textContent = "⚠️ กรุณากรอกข้อมูลให้ครบถ้วน";
+        return;
+    }
+
+    statusEl.style.color = "#555";
+    statusEl.style.background = "#f1f1f1";
+    statusEl.textContent = "⏳ กำลังบันทึกข้อมูล...";
+
+    google.script.run
+        .withSuccessHandler(function(res){
+            statusEl.style.color = "#2e7d32";
+            statusEl.style.background = "#e8f5e9";
+            statusEl.textContent = "✅ บันทึกข้อมูลสำเร็จ";
+
+            document.getElementById("incidentForm").reset();
+
+            setTimeout(() => {
+                statusEl.textContent = "";
+                statusEl.style.background = "transparent";
+            }, 3000);
+        })
+        .withFailureHandler(function(err){
+            statusEl.style.color = "#e53935";
+            statusEl.style.background = "#ffebee";
+            statusEl.textContent = "❌ เกิดข้อผิดพลาด: " + err.message;
+        })
+        .submitFormData(data);
+});
+</script>
+
+</body>
+</html>
